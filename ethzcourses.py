@@ -25,17 +25,4 @@ def parse_ratings(df: pd.DataFrame, new_cols: list, course_code: str, ratings: l
     temp_df = pd.DataFrame(ratings)
     df.loc[df['Code'] == course_code, new_cols[:5]] = list(temp_df.mean())
     df.loc[df['Code'] == course_code, new_cols[5]] = len(ratings)
-    
-    
-
-df = pd.read_csv('course_catalog.csv')
-new_cols = ['Recommended', 'Engaging', 'Difficulty', 'Effort', 'Resources','Number of answers', 'Total score']
-df.loc[:, new_cols] = np.nan
-df.set_index('Code')
-course_codes = df['Code'].to_list()
-
-for course in course_codes:
-    ratings = get_ratings(course_code=course)
-    parse_ratings(df,new_cols,course,ratings)
-
-print(df.sort_values(by=['Recommended'],ascending=False).head(50))
+        
