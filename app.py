@@ -6,6 +6,7 @@ from typing import Tuple
 
 st.set_page_config(layout='wide')
 st.title('ETH Zürich Course Explorer')
+st.write("Streamlit version:", st.__version__)
 
 @st.cache_data
 def load_and_initialize_table() -> Tuple[int, int, pd.DataFrame]:
